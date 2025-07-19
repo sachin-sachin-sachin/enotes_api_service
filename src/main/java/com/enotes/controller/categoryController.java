@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,7 +61,26 @@ public class categoryController {
 		return new ResponseEntity<>(allCategory,HttpStatus.OK);
 	}
 	
+	@GetMapping("/get/{id}")
+	public ResponseEntity<?> getCategoryById(@PathVariable Integer id){
+		
+		categoryDto categoryById = categoryService.getCategoryById(id);
+		if(ObjectUtils.isEmpty(categoryById)) {
+			return new ResponseEntity<>("Id Not found",HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(categoryById,HttpStatus.OK);
+	}
 	
+	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<?> deleteCategoryById(@PathVariable Integer id){
+		
+		Boolean categoryById = categoryService.deleteCategoryById(id);
+	if(categoryById) {
+		return new ResponseEntity<>("id "+id+" is deleted",HttpStatus.OK);
+	}
+	return new ResponseEntity<>("id not found",HttpStatus.NOT_FOUND);
+	}
 	
 
 }

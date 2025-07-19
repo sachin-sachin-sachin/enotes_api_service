@@ -2,6 +2,7 @@ package com.enotes.service_impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.catalina.mapper.Mapper;
 import org.modelmapper.ModelMapper;
@@ -52,16 +53,35 @@ public class categoryServiceImpl implements CategoryService{
 
 	@Override
 	public List<categoryDto> getcategory() {
-		List<Category> categories = categoryRepo.findAll();
+		List<Category> categories = categoryRepo.findByIsDeletedFalse();
 		List<categoryDto> categoryDtoList = categories.stream().map(cat -> modelMapper.map(cat,categoryDto.class)).toList();
 		return categoryDtoList;
 	}
 
 	@Override
 	public List<categoryResponse> getActiveCategory() {
-		List<Category> categories = categoryRepo.findByIsActiveTrue();
+		List<Category> categories = categoryRepo.findByIsActiveTrueAndIsDeletedFalse();
 		List<categoryResponse> ActiveCategorylist = categories.stream().map(cat->modelMapper.map(cat,categoryResponse.class)).toList();
 		return ActiveCategorylist;
+	}
+
+	@Override
+	public categoryDto getCategoryById(Integer id) {
+		Optional<Category> categoryById = categoryRepo.findByIdAndIsActiveTrueAndIsDeletedFalse(id);
+		categoryDto categories = modelMapper.map(categoryById,categoryDto.class);
+		return categories;
+	}
+
+	@Override
+	public Boolean deleteCategoryById(Integer id) {
+	     Optional<Category> FindByIdAndIsActiveTrue = categoryRepo.findById(id);
+	   if(FindByIdAndIsActiveTrue.isPresent()) {
+		   Category category=FindByIdAndIsActiveTrue.get();
+		   category.setIsDeleted(true);
+		   categoryRepo.save(category);
+		   return true;
+	   }
+		return false ;
 	}
 
 	
