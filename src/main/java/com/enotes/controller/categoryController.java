@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.enotes.entity.Category;
+import com.enotes.exception.ResourceNotFoundException;
 import com.enotes.dto.categoryDto;
 import com.enotes.dto.categoryResponse;
 import com.enotes.repository.CategoryRepo;
@@ -62,7 +63,7 @@ public class categoryController {
 	}
 	
 	@GetMapping("/get/{id}")
-	public ResponseEntity<?> getCategoryById(@PathVariable Integer id){
+	public ResponseEntity<?> getCategoryById(@PathVariable Integer id) throws ResourceNotFoundException{
 		
 		categoryDto categoryById = categoryService.getCategoryById(id);
 		if(ObjectUtils.isEmpty(categoryById)) {

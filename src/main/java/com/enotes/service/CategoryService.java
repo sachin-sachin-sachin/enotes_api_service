@@ -5,6 +5,7 @@ import java.util.List;
 import com.enotes.dto.categoryDto;
 import com.enotes.dto.categoryResponse;
 import com.enotes.entity.Category;
+import com.enotes.exception.ResourceNotFoundException;
 
 public interface CategoryService {
 
@@ -14,7 +15,7 @@ public interface CategoryService {
 
 	public List<categoryResponse> getActiveCategory();
 
-	public categoryDto getCategoryById(Integer id);
+	public categoryDto getCategoryById(Integer id) throws ResourceNotFoundException;
 
 	public Boolean deleteCategoryById(Integer id);
 }
