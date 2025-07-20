@@ -18,23 +18,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
-import com.enotes.dto.categoryDto;
+import com.enotes.dto.CategoryDto;
 import com.enotes.dto.categoryResponse;
 import com.enotes.repository.CategoryRepo;
 import com.enotes.service.CategoryService;
+import com.enotes.util.Validation;
 
 @RestController
 @RequestMapping("/api/v1/category")
-public class categoryController {
+public class CategoryController {
 
 	
 	@Autowired
 	private CategoryService categoryService;
 
-
 	
 	@PostMapping("/save_category")
-	public ResponseEntity<?> saveCategory(@RequestBody categoryDto categoryDto){
+	public ResponseEntity<?> saveCategory(@RequestBody CategoryDto categoryDto){
 	
 		Boolean saveCategory = categoryService.saveCategory(categoryDto);
 		if(saveCategory) {
@@ -45,7 +45,7 @@ public class categoryController {
 	
 	@GetMapping("/categories")
 	public ResponseEntity<?> getCategory(){
-		List<categoryDto> allCategory = categoryService.getcategory();
+		List<CategoryDto> allCategory = categoryService.getcategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
 			return ResponseEntity.noContent().build();
 		}
@@ -65,7 +65,7 @@ public class categoryController {
 	@GetMapping("/get/{id}")
 	public ResponseEntity<?> getCategoryById(@PathVariable Integer id) throws ResourceNotFoundException{
 		
-		categoryDto categoryById = categoryService.getCategoryById(id);
+		CategoryDto categoryById = categoryService.getCategoryById(id);
 		if(ObjectUtils.isEmpty(categoryById)) {
 			return new ResponseEntity<>("Id Not found",HttpStatus.NOT_FOUND);
 		}

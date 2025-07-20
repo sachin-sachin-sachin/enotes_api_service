@@ -2,20 +2,20 @@ package com.enotes.service;
 
 import java.util.List;
 
-import com.enotes.dto.categoryDto;
+import com.enotes.dto.CategoryDto;
 import com.enotes.dto.categoryResponse;
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
 
 public interface CategoryService {
 
-	public Boolean saveCategory(categoryDto categoryDto);
+	public Boolean saveCategory(CategoryDto categoryDto);
 	
-	public List<categoryDto> getcategory();
+	public List<CategoryDto> getcategory();
 
 	public List<categoryResponse> getActiveCategory();
 
-	public categoryDto getCategoryById(Integer id) throws ResourceNotFoundException;
+	public CategoryDto getCategoryById(Integer id) throws ResourceNotFoundException;
 
 	public Boolean deleteCategoryById(Integer id);
 }

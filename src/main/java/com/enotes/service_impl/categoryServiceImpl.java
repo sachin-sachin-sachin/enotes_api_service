@@ -10,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import com.enotes.dto.categoryDto;
+import com.enotes.dto.CategoryDto;
 import com.enotes.dto.categoryResponse;
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
 import com.enotes.repository.CategoryRepo;
 import com.enotes.service.CategoryService;
+import com.enotes.util.Validation;
 
 @Service
 public class categoryServiceImpl implements CategoryService {
@@ -25,17 +26,16 @@ public class categoryServiceImpl implements CategoryService {
 
 	@Autowired
 	private CategoryRepo categoryRepo;
+	
+	@Autowired
+	private Validation validation;
+
 
 	@Override
-	public Boolean saveCategory(categoryDto categoryDto) {
+	public Boolean saveCategory(CategoryDto categoryDto) {
 
-		// old approach...
-//		Category category=new Category();
-//		category.setName(categoryDto.getName());
-//		category.setDescription(categoryDto.getDescription());
-//		category.setIsActive(categoryDto.getIsActive());
-
-		// new approach..
+		validation.categoryValidation(categoryDto);
+		
 		Category category = modelMapper.map(categoryDto, Category.class);
 		if (ObjectUtils.isEmpty(category.getId())) {
 			category.setIsDeleted(false);
@@ -66,9 +66,9 @@ public class categoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<categoryDto> getcategory() {
+	public List<CategoryDto> getcategory() {
 		List<Category> categories = categoryRepo.findByIsDeletedFalse();
-		List<categoryDto> categoryDtoList = categories.stream().map(cat -> modelMapper.map(cat, categoryDto.class))
+		List<CategoryDto> categoryDtoList = categories.stream().map(cat -> modelMapper.map(cat, CategoryDto.class))
 				.toList();
 		return categoryDtoList;
 	}
@@ -82,10 +82,10 @@ public class categoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public categoryDto getCategoryById(Integer id) throws ResourceNotFoundException {
+	public CategoryDto getCategoryById(Integer id) throws ResourceNotFoundException {
 		Category categoryById = categoryRepo.findByIdAndIsDeletedFalse(id).orElseThrow(()->new ResourceNotFoundException("Id Not Found With "+id));
 		if (!ObjectUtils.isEmpty(categoryById)) {
-			categoryDto categories = modelMapper.map(categoryById, categoryDto.class);	
+			CategoryDto categories = modelMapper.map(categoryById, CategoryDto.class);	
 			return categories;	
 		}
 	return null;

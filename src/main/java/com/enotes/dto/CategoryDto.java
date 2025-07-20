@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class categoryDto {
+public class CategoryDto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
