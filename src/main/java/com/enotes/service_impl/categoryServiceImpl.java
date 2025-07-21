@@ -1,6 +1,5 @@
 package com.enotes.service_impl;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +13,7 @@ import com.enotes.dto.CategoryDto;
 import com.enotes.dto.categoryResponse;
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
+import com.enotes.exception.existDataException;
 import com.enotes.repository.CategoryRepo;
 import com.enotes.service.CategoryService;
 import com.enotes.util.Validation;
@@ -35,6 +35,12 @@ public class categoryServiceImpl implements CategoryService {
 	public Boolean saveCategory(CategoryDto categoryDto) {
 
 		validation.categoryValidation(categoryDto);
+		
+	Boolean existName= categoryRepo.existsByName(categoryDto.getName().trim());
+	
+	if(existName) {
+		throw new existDataException("name is already exist");
+	}
 		
 		Category category = modelMapper.map(categoryDto, Category.class);
 		if (ObjectUtils.isEmpty(category.getId())) {
