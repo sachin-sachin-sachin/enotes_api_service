@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.enotes.dto.CategoryDto;
-import com.enotes.dto.categoryResponse;
+import com.enotes.dto.CategoryResponse;
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
 import com.enotes.exception.existDataException;
@@ -80,10 +80,10 @@ public class categoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<categoryResponse> getActiveCategory() {
+	public List<CategoryResponse> getActiveCategory() {
 		List<Category> categories = categoryRepo.findByIsActiveTrueAndIsDeletedFalse();
-		List<categoryResponse> ActiveCategorylist = categories.stream()
-				.map(cat -> modelMapper.map(cat, categoryResponse.class)).toList();
+		List<CategoryResponse> ActiveCategorylist = categories.stream()
+				.map(cat -> modelMapper.map(cat, CategoryResponse.class)).toList();
 		return ActiveCategorylist;
 	}
 

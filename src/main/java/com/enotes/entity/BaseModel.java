@@ -15,8 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @MappedSuperclass
-
-public abstract class baseModel {
+public abstract class BaseModel {
 	
 	@CreatedBy
 	@Column(updatable = false)

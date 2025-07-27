@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
 import com.enotes.dto.CategoryDto;
-import com.enotes.dto.categoryResponse;
+import com.enotes.dto.CategoryResponse;
 import com.enotes.repository.CategoryRepo;
 import com.enotes.service.CategoryService;
 import com.enotes.util.Validation;
@@ -59,7 +59,7 @@ public class CategoryController {
 	
 	@GetMapping("/getIsActiveCategories")
 	public ResponseEntity<?> getCategoryResponseIsActive(){
-		List<categoryResponse> allCategory = categoryService.getActiveCategory();
+		List<CategoryResponse> allCategory = categoryService.getActiveCategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
 			return ResponseEntity.noContent().build();
 		}

@@ -13,11 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 public class globalExceptionHandling {
 	
 	
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<?> ExceptionHandler(Exception e) {
-		log.error("globalExceptionHandling :: ExceptionHandler ::",e.getMessage());
-		return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+//	@ExceptionHandler(Exception.class)
+//	public ResponseEntity<?> ExceptionHandler(Exception e) {
+//		log.error("globalExceptionHandling :: ExceptionHandler ::",e.getMessage());
+//		return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
 	
 	@ExceptionHandler(NullPointerException.class)
 	public ResponseEntity<?> nullPointerExceptionHandler(Exception e) {

@@ -3,7 +3,7 @@ package com.enotes.service;
 import java.util.List;
 
 import com.enotes.dto.CategoryDto;
-import com.enotes.dto.categoryResponse;
+import com.enotes.dto.CategoryResponse;
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
 
@@ -13,7 +13,7 @@ public interface CategoryService {
 	
 	public List<CategoryDto> getcategory();
 
-	public List<categoryResponse> getActiveCategory();
+	public List<CategoryResponse> getActiveCategory();
 
 	public CategoryDto getCategoryById(Integer id) throws ResourceNotFoundException;
 
