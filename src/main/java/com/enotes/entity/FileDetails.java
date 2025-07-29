@@ -1,38 +1,33 @@
 package com.enotes.entity;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
-public class Notes extends BaseModel {
-
+@Getter
+@Setter
+public class FileDetails {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String title;
-	
-	private String description;
-	
-	@ManyToOne
-	private Category category;
-	
-	@ManyToOne
-	private FileDetails fileDetails;
+	private String uploadFileName;
+
+	private String originalFileName;
+
+	private String displayFileName;
+
+	private String path;
+
+	private Long fileSize;
 	
 }

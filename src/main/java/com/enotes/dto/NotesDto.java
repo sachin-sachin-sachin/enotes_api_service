@@ -19,8 +19,6 @@ private Integer id;
 	
 	private String description;
 	
-	private CategoryDto category;
-	
 	private Integer created_by;
 
 	private Date created_on;
@@ -28,6 +26,20 @@ private Integer id;
 	private Integer updated_by;
 
 	private Date updated_on;
+	
+	private CategoryDto category;
+	
+	private FilesDto fileDetails;
+
+	@Getter
+	@Setter
+	@AllArgsConstructor
+	@NoArgsConstructor
+	public static class FilesDto {
+		private Integer id;
+		private String originalFileName;
+		private String displayFileName;
+	}
 	
 	@Getter
 	@Setter

@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.enotes.dto.NotesDto;
 import com.enotes.service.NotesService;
@@ -24,13 +26,16 @@ public class notesController {
 	private NotesService notesService;
 
 	@PostMapping("/save")
-	public ResponseEntity<?> saveNotes(@RequestBody NotesDto notesDto)throws Exception{
-		boolean saveNotes = notesService.saveNotes(notesDto);
+	public ResponseEntity<?> saveNotes(@RequestParam String notesDto,@RequestParam(required = false) MultipartFile file)throws Exception{
+		
+		
+		boolean saveNotes = notesService.saveNotes(notesDto,file);
 		if(saveNotes) {
 			return commonUtil.createBuildResponseMessage("Save Success",HttpStatus.CREATED);
 		}
 		return commonUtil.createErrorResponseMessage("Data Note Save",HttpStatus.INTERNAL_SERVER_ERROR);	
 	}
+	
 	
 	@GetMapping("/getAll")
 	public ResponseEntity<?> getAllNotes(){
