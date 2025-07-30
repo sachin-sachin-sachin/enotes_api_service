@@ -1,7 +1,10 @@
 package com.enotes.service_impl;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.enotes.dto.NotesDto;
@@ -129,6 +133,25 @@ public class notesServiceImpl implements NotesService{
 	private void checkCategoryExist(CategoryDto category) throws Exception {
 		categoryRepo.findById(category.getId()).orElseThrow(() -> new ResourceNotFoundException("category id invalid"));
 	}
+
+	
+	
+	
+	@Override
+	public FileDetails getFileDetails(Integer id) throws Exception {
+		FileDetails fileDetails = fileRepo.findById(id).orElseThrow(()->new ResourceNotFoundException(""));
+		return fileDetails;
+	}
+
+	@Override
+	public byte[] downloadFile(FileDetails fileDetails) throws Exception {
+		InputStream io=new FileInputStream(fileDetails.getPath());
+		return StreamUtils.copyToByteArray(io);
+	}
+	
+	
+	
+	
 
 	@Override
 	public List<NotesDto> getAllNotes() { 
