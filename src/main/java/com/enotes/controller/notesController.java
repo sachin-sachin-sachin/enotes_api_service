@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +27,15 @@ import com.enotes.util.commonUtil;
 @RestController
 @RequestMapping("/api/v1/notes")
 public class notesController {
+
+    private final CategoryController categoryController;
 	
 	@Autowired
 	private NotesService notesService;
+
+    notesController(CategoryController categoryController) {
+        this.categoryController = categoryController;
+    }
 
 	@PostMapping("/save")
 	public ResponseEntity<?> saveNotes(@RequestParam String notesDto,@RequestParam(required = false) MultipartFile file)throws Exception{
@@ -78,6 +85,40 @@ public class notesController {
 		}
 		return ResponseEntity.noContent().build();
 		// return commonUtil.createErrorResponseMessage("Data Note Save",HttpStatus.INTERNAL_SERVER_ERROR);	
+	}
+	
+	
+	@GetMapping("/delete/{id}")
+	public ResponseEntity<?> sofDeleteUserNotes(@PathVariable Integer id) throws Exception{
+		
+		boolean deletedNote =notesService.softDeleteNotes(id);
+		if(deletedNote) {
+			return commonUtil.createBuildResponseMessage("Delete Success", HttpStatus.OK);	
+		}
+		return  commonUtil.createErrorResponseMessage("Id Not Deleted ! Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
+	
+	@GetMapping("/restore/{id}")
+	public ResponseEntity<?> restoreUserNotes(@PathVariable Integer id) throws Exception{
+		
+		boolean restoreNote =notesService.restoreNotes(id);
+		if(restoreNote) {
+			return commonUtil.createBuildResponseMessage("Restore Success", HttpStatus.OK);	
+		}
+		return  commonUtil.createErrorResponseMessage("Id Not Restore ! Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
+	
+	@GetMapping("/recycleBin")
+	public ResponseEntity<?> getUserRecycleBinNotes() throws Exception{
+		Integer userId=2;
+		List<NotesDto> notesDto=notesService.getUserRecycleBinNotes(userId);
+    	if(!CollectionUtils.isEmpty(notesDto)) {
+			return commonUtil.createBuildResponse(notesDto, HttpStatus.OK);	
+		}
+		return  commonUtil.createErrorResponseMessage("Notes not avaible in Recycle Bin", HttpStatus.OK);
+		
 	}
 	
 		

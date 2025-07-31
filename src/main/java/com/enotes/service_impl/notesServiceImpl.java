@@ -7,8 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
@@ -59,6 +61,9 @@ public class notesServiceImpl implements NotesService{
 		
 		ObjectMapper obMapper=new ObjectMapper();
 		NotesDto notesDtoObject = obMapper.readValue(notesDto,NotesDto.class);
+		
+		notesDtoObject.setIsDeleted(false);
+		notesDtoObject.setDeletedOn(null);
 		
 		// update notes if id is given in request
 				if (!ObjectUtils.isEmpty(notesDtoObject.getId())) {
@@ -204,6 +209,43 @@ public class notesServiceImpl implements NotesService{
 		return notes;
 	}
 	
+	
+	@Override
+	public boolean softDeleteNotes(Integer id) throws Exception {
+
+		Notes notes = noteRepo.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Notes id invalid ! Not Found"));
+		notes.setIsDeleted(true);
+		notes.setDeletedOn(LocalDateTime.now());
+		Notes noteData=noteRepo.save(notes);
+		if(!ObjectUtils.isEmpty(noteData)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean restoreNotes(Integer id) throws Exception {
+		Notes notes = noteRepo.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Notes id invalid ! Not Found"));
+		notes.setIsDeleted(false);
+		notes.setDeletedOn(null);
+		Notes save = noteRepo.save(notes);
+		if(!ObjectUtils.isEmpty(save)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public List<NotesDto> getUserRecycleBinNotes(Integer userId) {
+		List<Notes> recycleBinNotes= noteRepo.findByCreatedByAndIsDeletedTrue(userId);
+		List<NotesDto> notesDtoList = recycleBinNotes.stream().map(note->mapper.map(note,NotesDto.class)).toList();	
+		return notesDtoList;
+	}
+
+	
+		
 	
 
 }

@@ -1,5 +1,6 @@
 package com.enotes.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -27,9 +28,15 @@ private Integer id;
 
 	private Date updated_on;
 	
+    private Boolean isDeleted;
+		
+    private LocalDate deletedOn;
+	
 	private CategoryDto category;
 	
 	private FilesDto fileDetails;
+	
+   
 
 	@Getter
 	@Setter

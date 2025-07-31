@@ -22,4 +22,10 @@ public interface NotesService {
 
 	public NotesResponse getAllNotesByUser(Integer userId, Integer pageNo, Integer pageSize);
 
+	public boolean softDeleteNotes(Integer id) throws Exception;
+
+	public boolean restoreNotes(Integer id) throws Exception;
+
+	public List<NotesDto> getUserRecycleBinNotes(Integer userId);
+
 	}
