@@ -1,6 +1,6 @@
 package com.enotes.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -20,17 +20,17 @@ private Integer id;
 	
 	private String description;
 	
-	private Integer created_by;
+	private Integer createdBy;
 
-	private Date created_on;
+	private Date createdOn;
 
-	private Integer updated_by;
+	private Integer updatedBy;
 
-	private Date updated_on;
+	private Date updatedOn;
 	
     private Boolean isDeleted;
 		
-    private LocalDate deletedOn;
+    private LocalDateTime deletedOn;
 	
 	private CategoryDto category;
 	

@@ -21,6 +21,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -244,8 +245,27 @@ public class notesServiceImpl implements NotesService{
 		return notesDtoList;
 	}
 
+	@Override
+	public void hardDeleteNotes(Integer id) throws Exception {
+	Notes notes = noteRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Notes not found"));
+	if (notes.getIsDeleted()) {
+		noteRepo.delete(notes);
+	} else {
+		throw new IllegalArgumentException("Sorry You cant hard delete Directly");
+	}
+}
+	
+
+	@Override
+	public void emptyRecycleBin(int userId) throws Exception {
+		List<Notes> recycleNotes = noteRepo.findByCreatedByAndIsDeletedTrue(userId);
+		if (!CollectionUtils.isEmpty(recycleNotes)) {
+			noteRepo.deleteAll(recycleNotes);
+		}
+	}
+	
+	
 	
 		
-	
 
 }
