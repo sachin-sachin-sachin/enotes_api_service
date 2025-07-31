@@ -62,9 +62,9 @@ public class categoryServiceImpl implements CategoryService {
 		Optional<Category> findById = categoryRepo.findById(category.getId());
 		if (findById.isPresent()) {
 			Category category2 = findById.get();
-			category.setCreated_by(category2.getCreated_by());
+			category.setCreatedBy(category2.getCreatedBy());
 			category.setIsDeleted(category2.getIsDeleted());
-			category.setCreated_on(category2.getCreated_on());
+			category.setCreatedOn(category2.getCreatedOn());
 
 //			category.setUpdated_by(1);
 //			category.setUpdated_on(new Date());
