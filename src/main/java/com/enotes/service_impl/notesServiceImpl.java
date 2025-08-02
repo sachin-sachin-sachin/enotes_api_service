@@ -91,7 +91,6 @@ public class notesServiceImpl implements NotesService{
 			if (ObjectUtils.isEmpty(notesDtoObject.getId())) {
 				notesMap.setFileDetails(null);
 			}
-			notesMap.setFileDetails(null);
 		}
 		
 		Notes save = noteRepo.save(notesMap);
@@ -304,7 +303,21 @@ public class notesServiceImpl implements NotesService{
 	}	
 	
 	
-	
+	@Override
+	public Boolean copyNotes(Integer id) throws Exception {
+		Notes notes = noteRepo.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Notes id invalid ! Not Found"));
+
+		Notes copyNote = Notes.builder().title(notes.getTitle()).description(notes.getDescription())
+				.category(notes.getCategory()).isDeleted(false).fileDetails(null).build();
+		
+		// TODO : Need to check User Validation
+		Notes saveCopyNote = noteRepo.save(copyNote);
+		if (!ObjectUtils.isEmpty(saveCopyNote)) {
+			return true;
+		}
+		return false;
+	}
 		
 
 }
