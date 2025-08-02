@@ -42,6 +42,11 @@ public class globalExceptionHandling {
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.CONFLICT);
 	}
 	
+	@ExceptionHandler(AlreadyFavoritedException.class)
+	public ResponseEntity<?> handleAlreadyFavorited(AlreadyFavoritedException e) {
+	    return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	   //         .body(Map.of("status", "Error", "message", ex.getMessage()));
+	}
 	
 	
 	
