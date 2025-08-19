@@ -19,7 +19,7 @@ public class AuthController {
 	private UserService userService;
 
 	@PostMapping("/")
-	public ResponseEntity<?> registerUser(@RequestBody UserDto userDto) {
+	public ResponseEntity<?> registerUser(@RequestBody UserDto userDto) throws Exception {
 		Boolean register = userService.register(userDto);
 		if (register) {
 			return commonUtil.createBuildResponseMessage("Register success", HttpStatus.CREATED);
