@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 
 import com.enotes.handler.GenericResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 public class commonUtil {
 
 	public static ResponseEntity<?> createBuildResponse(Object data,HttpStatus status) {
@@ -68,6 +70,12 @@ public static String getContentType(String originalFileName) {
 	default:
 		return "application/octet-stream";
 	}
+}
+
+public static String getUrl(HttpServletRequest request) {
+	String apiUrl = request.getRequestURL().toString(); // http:localhost:8080/api/v1/auth
+	apiUrl=apiUrl.replace(request.getServletPath(),""); // http:localhost:8080
+	return apiUrl;
 }
 	
 }

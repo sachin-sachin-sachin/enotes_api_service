@@ -58,6 +58,13 @@ public class globalExceptionHandling {
 		return commonUtil.createErrorResponse(e.getMessage(), HttpStatus.CONFLICT);
 	}
 	
+
+	@ExceptionHandler(SuccessException.class)
+	public ResponseEntity<?> handleSuccessException(SuccessException e) {
+		log.error("GlobalExceptionHandler :: handleException ::", e.getMessage());
+		return commonUtil.createBuildResponseMessage(e.getMessage(), HttpStatus.OK);
+	}
+	
 	@ExceptionHandler(AlreadyFavoritedException.class)
 	public ResponseEntity<?> handleAlreadyFavorited(AlreadyFavoritedException e) {
 	    return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
