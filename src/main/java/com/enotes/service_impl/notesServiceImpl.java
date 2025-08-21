@@ -41,6 +41,7 @@ import com.enotes.repository.FavouriteNotesRepository;
 import com.enotes.repository.FileRepository;
 import com.enotes.repository.NotesRepo;
 import com.enotes.service.NotesService;
+import com.enotes.util.commonUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -203,7 +204,8 @@ public class notesServiceImpl implements NotesService{
 	
 
 	@Override
-	public NotesResponse getAllNotesByUser(Integer userId, Integer pageNo, Integer pageSize) {
+	public NotesResponse getAllNotesByUser(Integer pageNo, Integer pageSize) {
+		Integer userId = commonUtil.getLoggedInUser().getId();
 		Pageable pageable = PageRequest.of(pageNo, pageSize);
 		Page<Notes> pageNotes = noteRepo.findByCreatedBy(userId, pageable);
 
@@ -245,7 +247,8 @@ public class notesServiceImpl implements NotesService{
 	}
 
 	@Override
-	public List<NotesDto> getUserRecycleBinNotes(Integer userId) {
+	public List<NotesDto> getUserRecycleBinNotes() {
+		Integer userId = commonUtil.getLoggedInUser().getId();
 		List<Notes> recycleBinNotes= noteRepo.findByCreatedByAndIsDeletedTrue(userId);
 		List<NotesDto> notesDtoList = recycleBinNotes.stream().map(note->mapper.map(note,NotesDto.class)).toList();	
 		return notesDtoList;
@@ -263,7 +266,8 @@ public class notesServiceImpl implements NotesService{
 	
 
 	@Override
-	public void emptyRecycleBin(int userId) throws Exception {
+	public void emptyRecycleBin() throws Exception {
+		Integer userId = commonUtil.getLoggedInUser().getId();
 		List<Notes> recycleNotes = noteRepo.findByCreatedByAndIsDeletedTrue(userId);
 		if (!CollectionUtils.isEmpty(recycleNotes)) {
 			noteRepo.deleteAll(recycleNotes);
@@ -271,7 +275,8 @@ public class notesServiceImpl implements NotesService{
 	}
 
 	@Override
-	public boolean setFavouriteNote(Integer id, int userId) throws Exception {
+	public boolean setFavouriteNote(Integer id) throws Exception {
+		Integer userId = commonUtil.getLoggedInUser().getId();
 		 // Check if already favorited
 	    if (favNoteRepo.existsByNoteId(id)) {
 	        throw new AlreadyFavoritedException("Note already marked as favorite.");
@@ -297,7 +302,7 @@ public class notesServiceImpl implements NotesService{
 
 	@Override
 	public List<FavouriteNotesDto> getUserFavoriteNotes() throws Exception {
-		int userId = 2;
+		Integer userId = commonUtil.getLoggedInUser().getId();
 		List<FavouriteNotes> favouriteNotes = favNoteRepo.findByUserId(userId);
 		return favouriteNotes.stream().map(fn -> mapper.map(fn, FavouriteNotesDto.class)).toList();
 	}	

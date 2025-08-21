@@ -21,19 +21,19 @@ public interface NotesService {
 
 	public byte[] downloadFile(FileDetails fileDetails) throws Exception;
 
-	public NotesResponse getAllNotesByUser(Integer userId, Integer pageNo, Integer pageSize);
+	public NotesResponse getAllNotesByUser(Integer pageNo, Integer pageSize);
 
 	public boolean softDeleteNotes(Integer id) throws Exception;
 
 	public boolean restoreNotes(Integer id) throws Exception;
 
-	public List<NotesDto> getUserRecycleBinNotes(Integer userId);
+	public List<NotesDto> getUserRecycleBinNotes();
 
 	public void hardDeleteNotes(Integer id)throws Exception;
 
-	public void emptyRecycleBin(int userId)throws Exception;
+	public void emptyRecycleBin()throws Exception;
 
-	public boolean setFavouriteNote(Integer id, int userId) throws Exception;
+	public boolean setFavouriteNote(Integer id) throws Exception;
 
 	public void unFavoriteNotes(Integer favNotId)throws Exception;
 

@@ -74,7 +74,7 @@ public class notesController {
 	public ResponseEntity<?>getUserNotesByPagination(@RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
 			@RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
 		Integer userId = 2;
-		NotesResponse notes = notesService.getAllNotesByUser(userId,pageNo,pageSize);
+		NotesResponse notes = notesService.getAllNotesByUser(pageNo,pageSize);
 //		if (CollectionUtils.isEmpty(notes)) {
 //			return ResponseEntity.noContent().build();
 //		}
@@ -122,8 +122,7 @@ public class notesController {
 	@GetMapping("/recycleBin")
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?> getUserRecycleBinNotes() throws Exception{
-		Integer userId=2;
-		List<NotesDto> notesDto=notesService.getUserRecycleBinNotes(userId);
+		List<NotesDto> notesDto=notesService.getUserRecycleBinNotes();
     	if(!CollectionUtils.isEmpty(notesDto)) {
 			return commonUtil.createBuildResponse(notesDto, HttpStatus.OK);	
 		}
@@ -141,8 +140,7 @@ public class notesController {
 	@DeleteMapping("/deleteAllBin")
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?> emptyRecyleBin() throws Exception {
-		int userId=2;
-		notesService.emptyRecycleBin(userId);
+		notesService.emptyRecycleBin();
 		return commonUtil.createBuildResponseMessage("Delete Success", HttpStatus.OK);
 	}
 	
@@ -150,8 +148,7 @@ public class notesController {
 	@GetMapping("/fav-note/{id}")
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?> setFavouriteNote(@PathVariable Integer id) throws Exception {
-		int userId=2;
-		boolean favNote=notesService.setFavouriteNote(id,userId);
+		boolean favNote=notesService.setFavouriteNote(id);
 		if(favNote) {
 			return commonUtil.createBuildResponseMessage("Note Set As Favaourite", HttpStatus.OK);
 		}
