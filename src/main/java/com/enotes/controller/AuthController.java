@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.enotes.dto.LoginRequest;
 import com.enotes.dto.LoginResponse;
-import com.enotes.dto.UserDto;
-import com.enotes.service.UserService;
+import com.enotes.dto.UserRequest;
+import com.enotes.service.AuthService;
 import com.enotes.util.commonUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,12 +21,12 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
 	@Autowired
-	private UserService userService;
+	private AuthService authService;
 
 	@PostMapping("/")
-	public ResponseEntity<?> registerUser(@RequestBody UserDto userDto,HttpServletRequest request) throws Exception {
+	public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest,HttpServletRequest request) throws Exception {
 		String url=commonUtil.getUrl(request);
-		Boolean register = userService.register(userDto,url);
+		Boolean register = authService.register(userRequest,url);
 		if (register) {
 			return commonUtil.createBuildResponseMessage("Register success", HttpStatus.CREATED);
 		}
@@ -36,7 +36,7 @@ public class AuthController {
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception {
 
-		LoginResponse loginResponse = userService.login(loginRequest);
+		LoginResponse loginResponse = authService.login(loginRequest);
 		if (ObjectUtils.isEmpty(loginResponse)) {
 			return commonUtil.createErrorResponseMessage("invalid credential", HttpStatus.BAD_REQUEST);
 		}
