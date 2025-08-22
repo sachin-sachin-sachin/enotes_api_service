@@ -1,0 +1,151 @@
+spring:
+  application:
+    name: enotes-api-service
+  profiles:
+    active:
+    - uat
+    
+---
+# dev config
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_dev
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: A51 SK GAMING
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none    
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mail:
+    host: smtp.gmail.com
+    username: jk7876632518@gmail.com
+    password: kuke hjsn hmqe ywjj
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+        starttls:
+          enable: true      
+  
+file:
+  upload:
+    path: notesFile/ 
+    
+---
+# test Config
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: A51 SK GAMING
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none    
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mail:
+    host: smtp.gmail.com
+    username: jk7876632518@gmail.com
+    password: kuke hjsn hmqe ywjj
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+        starttls:
+          enable: true       
+file:
+  upload:
+    path: notesFile/
+    
+---
+# uat Config
+spring:
+  config:
+    activate:
+      on-profile: uat
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_uat
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: A51 SK GAMING
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none    
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mail:
+    host: smtp.gmail.com
+    username: jk7876632518@gmail.com
+    password: kuke hjsn hmqe ywjj
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+        starttls:
+          enable: true       
+file:
+  upload:
+    path: notesFile/
+    
+---
+# prod config
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_prod
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: A51 SK GAMING
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: none    
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mail:
+    host: smtp.gmail.com
+    username: jk7876632518@gmail.com
+    password: kuke hjsn hmqe ywjj
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+        starttls:
+          enable: true       
+file:
+  upload:
+    path: notesFile/                       
