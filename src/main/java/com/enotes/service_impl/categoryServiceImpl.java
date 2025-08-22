@@ -1,0 +1,112 @@
+package com.enotes.service_impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+
+import com.enotes.dto.CategoryDto;
+import com.enotes.dto.CategoryResponse;
+import com.enotes.entity.Category;
+import com.enotes.exception.ResourceNotFoundException;
+import com.enotes.exception.existDataException;
+import com.enotes.repository.CategoryRepo;
+import com.enotes.service.CategoryService;
+import com.enotes.util.Validation;
+
+@Service
+public class categoryServiceImpl implements CategoryService {
+
+	@Autowired
+	private ModelMapper modelMapper;
+
+	@Autowired
+	private CategoryRepo categoryRepo;
+	
+	@Autowired
+	private Validation validation;
+
+
+	@Override
+	public Boolean saveCategory(CategoryDto categoryDto) {
+
+		validation.categoryValidation(categoryDto);
+		
+	Boolean existName= categoryRepo.existsByName(categoryDto.getName().trim());
+	
+	if(existName) {
+		throw new existDataException("name is already exist");
+	}
+		
+		Category category = modelMapper.map(categoryDto, Category.class);
+		if (ObjectUtils.isEmpty(category.getId())) {
+			category.setIsDeleted(false);
+//			category.setCreated_by(1);
+//			category.setCreated_on(new Date());
+		} else {
+			updateCategory(category);
+		}
+
+		Category saveCategory = categoryRepo.save(category);
+		if (ObjectUtils.isEmpty(saveCategory)) {
+			return false;
+		}
+		return true;
+	}
+
+	private void updateCategory(Category category) {
+		Optional<Category> findById = categoryRepo.findById(category.getId());
+		if (findById.isPresent()) {
+			Category category2 = findById.get();
+			category.setCreatedBy(category2.getCreatedBy());
+			category.setIsDeleted(category2.getIsDeleted());
+			category.setCreatedOn(category2.getCreatedOn());
+
+//			category.setUpdated_by(1);
+//			category.setUpdated_on(new Date());
+		}
+	}
+
+	@Override
+	public List<CategoryDto> getcategory() {
+		List<Category> categories = categoryRepo.findByIsDeletedFalse();
+		List<CategoryDto> categoryDtoList = categories.stream().map(cat -> modelMapper.map(cat, CategoryDto.class))
+				.toList();
+		return categoryDtoList;
+	}
+
+	@Override
+	public List<CategoryResponse> getActiveCategory() {
+		List<Category> categories = categoryRepo.findByIsActiveTrueAndIsDeletedFalse();
+		List<CategoryResponse> ActiveCategorylist = categories.stream()
+				.map(cat -> modelMapper.map(cat, CategoryResponse.class)).toList();
+		return ActiveCategorylist;
+	}
+
+	@Override
+	public CategoryDto getCategoryById(Integer id) throws ResourceNotFoundException {
+		Category categoryById = categoryRepo.findByIdAndIsDeletedFalse(id).orElseThrow(()->new ResourceNotFoundException("Id Not Found With "+id));
+		if (!ObjectUtils.isEmpty(categoryById)) {
+			CategoryDto categories = modelMapper.map(categoryById, CategoryDto.class);	
+			return categories;	
+		}
+	return null;
+	}
+
+	@Override
+	public Boolean deleteCategoryById(Integer id) {
+		Optional<Category> FindByIdAndIsActiveTrue = categoryRepo.findById(id);
+		if (FindByIdAndIsActiveTrue.isPresent()) {
+			Category category = FindByIdAndIsActiveTrue.get();
+			category.setIsDeleted(true);
+			categoryRepo.save(category);
+			return true;
+		}
+		return false;
+	}
+
+}
