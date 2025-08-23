@@ -20,72 +20,78 @@ import lombok.extern.slf4j.Slf4j;
 public class globalExceptionHandling {
 	
 	
-//	@ExceptionHandler(Exception.class)
-//	public ResponseEntity<?> ExceptionHandler(Exception e) {
-//		log.error("globalExceptionHandling :: ExceptionHandler ::",e.getMessage());
-//		return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<?> ExceptionHandler(Exception e) {
+		log.error("globalExceptionHandling :: ExceptionHandler : {}",e.getMessage());
+		return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 	
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<?> handleIllegalArgumentException(IllegalArgumentException e) {
-		log.error("GlobalExceptionHandler :: handleException ::", e.getMessage());
+		log.error("GlobalExceptionHandler :: handleIllegalArgumentException : {}", e.getMessage());
 		return commonUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(NullPointerException.class)
 	public ResponseEntity<?> nullPointerExceptionHandler(Exception e) {
-		log.error("globalExceptionHandling :: nullPointerExceptionHandler ::",e.getMessage());
+		log.error("globalExceptionHandling :: nullPointerExceptionHandler : {}",e.getMessage());
 		return commonUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<?> resourceNotFoundExceptionHandler(Exception e) {
-		log.error("globalExceptionHandling :: resourceNotFoundExceptionHandler ::",e.getMessage());
+		log.error("globalExceptionHandling :: resourceNotFoundExceptionHandler : {}",e.getMessage());
 		return commonUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 	
 	
 	@ExceptionHandler(validationException.class)
 	public ResponseEntity<?> validationExceptionHandler(validationException e) {
+		log.error("globalExceptionHandling :: validationExceptionHandler : {}",e.getMessage());
 		return commonUtil.createErrorResponse(e.getErrors(), HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(FileNotFoundException.class)
 	public ResponseEntity<?> handleFileNotFoundException(FileNotFoundException e) {
+		log.error("globalExceptionHandling :: handleFileNotFoundException : {}",e.getMessage());
 		return commonUtil.createErrorResponse(e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 
 	
 	@ExceptionHandler(existDataException.class)
 	public ResponseEntity<?> existDataExceptionHandler(existDataException e) {
+		log.error("globalExceptionHandling :: existDataExceptionHandler : {}",e.getMessage());
 		return commonUtil.createErrorResponse(e.getMessage(), HttpStatus.CONFLICT);
 	}
 	
 
 	@ExceptionHandler(SuccessException.class)
 	public ResponseEntity<?> handleSuccessException(SuccessException e) {
-		log.error("GlobalExceptionHandler :: handleException ::", e.getMessage());
+		log.error("GlobalExceptionHandler :: handleSuccessException ::", e.getMessage());
 		return commonUtil.createBuildResponseMessage(e.getMessage(), HttpStatus.OK);
 	}
 	
 	@ExceptionHandler(BadCredentialsException.class)
 	public ResponseEntity<?> handleBadCredentialsException(BadCredentialsException e) {
+		log.error("globalExceptionHandling :: handleBadCredentialsException : {}",e.getMessage());
 		return commonUtil.createErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<?> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
+		log.error("globalExceptionHandling :: handleHttpMessageNotReadableException : {}",e.getMessage());
 		return commonUtil.createErrorResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(AccessDeniedException.class)
 	public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException e) {
-		log.error("GlobalExceptionHandler :: handleException ::", e.getMessage());
+		log.error("GlobalExceptionHandler :: handleAccessDeniedException ::", e.getMessage());
 		return commonUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.FORBIDDEN);
 	}
 	
 	@ExceptionHandler(AlreadyFavoritedException.class)
 	public ResponseEntity<?> handleAlreadyFavorited(AlreadyFavoritedException e) {
+		log.error("globalExceptionHandling :: handleAlreadyFavorited : {}",e.getMessage());
 	    return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	   //         .body(Map.of("status", "Error", "message", ex.getMessage()));
 	}
