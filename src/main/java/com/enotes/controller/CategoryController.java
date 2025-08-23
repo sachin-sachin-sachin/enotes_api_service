@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.enotes.entity.Category;
 import com.enotes.exception.ResourceNotFoundException;
+import com.enotes.controllerEndpoint.CategoryEndpoint;
 import com.enotes.dto.CategoryDto;
 import com.enotes.dto.CategoryResponse;
 import com.enotes.repository.CategoryRepo;
@@ -27,16 +28,14 @@ import com.enotes.util.Validation;
 import com.enotes.util.commonUtil;
 
 @RestController
-@RequestMapping("/api/v1/category")
-public class CategoryController {
+public class CategoryController implements CategoryEndpoint {
 
 	
 	@Autowired
 	private CategoryService categoryService;
 
 	
-	@PostMapping("/save")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> saveCategory(@RequestBody CategoryDto categoryDto){
 	
 		Boolean saveCategory = categoryService.saveCategory(categoryDto);
@@ -48,9 +47,8 @@ public class CategoryController {
 	//	return new ResponseEntity<>("not saved",HttpStatus.INTERNAL_SERVER_ERROR) ;
 	}
 	
-	@GetMapping("/categories")
-	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> getCategory(){
+	@Override
+	public ResponseEntity<?> getAllCategory(){
 		List<CategoryDto> allCategory = categoryService.getcategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
 			return ResponseEntity.noContent().build();
@@ -60,9 +58,8 @@ public class CategoryController {
 	}
 	
 	
-	@GetMapping("/ActiveCategories")
-	@PreAuthorize("hasRole('USER','ADMIN')")
-	public ResponseEntity<?> getCategoryResponseIsActive(){
+	@Override
+	public ResponseEntity<?> getActiveCategory(){
 		List<CategoryResponse> allCategory = categoryService.getActiveCategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
 			return ResponseEntity.noContent().build();
@@ -71,8 +68,7 @@ public class CategoryController {
 	//	return new ResponseEntity<>(allCategory,HttpStatus.OK);
 	}
 	
-	@GetMapping("/get/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> getCategoryById(@PathVariable Integer id) throws ResourceNotFoundException{
 		
 		CategoryDto categoryById = categoryService.getCategoryById(id);
@@ -85,8 +81,7 @@ public class CategoryController {
 	}
 	
 	
-	@DeleteMapping("/delete/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> deleteCategoryById(@PathVariable Integer id){
 		
 		Boolean categoryById = categoryService.deleteCategoryById(id);

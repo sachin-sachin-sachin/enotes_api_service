@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.enotes.controllerEndpoint.AuthEndpoint;
 import com.enotes.dto.LoginRequest;
 import com.enotes.dto.LoginResponse;
 import com.enotes.dto.UserRequest;
@@ -16,29 +17,24 @@ import com.enotes.service.AuthService;
 import com.enotes.util.commonUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
-@RequestMapping("/api/v1/auth")
-public class AuthController {
+public class AuthController implements AuthEndpoint{
 	@Autowired
 	private AuthService authService;
 
-	@PostMapping("/register")
+	@Override
 	public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest,HttpServletRequest request) throws Exception {
-		log.info("AuthController : registerUser() : Exceution Start");
 		String url=commonUtil.getUrl(request);
 		Boolean register = authService.register(userRequest,url);
 		if (register) {
-			log.info("AuthController : registerUser() : Exceution End");
 			return commonUtil.createBuildResponseMessage("Register success", HttpStatus.CREATED);
 		}
-		log.info("Error : {}","Register failed");
 		return commonUtil.createErrorResponseMessage("Register failed", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@PostMapping("/login")
+	
+	@Override
 	public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception {
 
 		LoginResponse loginResponse = authService.login(loginRequest);

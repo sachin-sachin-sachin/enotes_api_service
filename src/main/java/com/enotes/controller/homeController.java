@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.enotes.controllerEndpoint.HomeEndpoint;
 import com.enotes.dto.PswdResetRequest;
 import com.enotes.service.HomeService;
 import com.enotes.service.UserService;
@@ -18,15 +19,14 @@ import com.enotes.util.commonUtil;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/api/v1/home")
-public class homeController {
+public class homeController implements HomeEndpoint{
 	@Autowired
 	private HomeService homeService;
 	
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/verify")
+	@Override
 	public ResponseEntity<?> verifyUserAccount(@RequestParam Integer uid, @RequestParam String code) throws Exception {
 		Boolean verifyAccount = homeService.verifyAccount(uid, code);
 		if (verifyAccount)
@@ -34,21 +34,21 @@ public class homeController {
 		return commonUtil.createErrorResponseMessage("Invalid Verification link", HttpStatus.BAD_REQUEST);
 	}
 	
-	@GetMapping("/send-email-reset")
+	@Override
 	public ResponseEntity<?> sendEmailForPasswordReset(@RequestParam String email, HttpServletRequest request)
 			throws Exception {
 		userService.sendEmailPasswordReset(email, request);
 		return commonUtil.createBuildResponseMessage("Email Send Success !! Check Email Reset Password", HttpStatus.OK);
 	}
 
-	@GetMapping("/verify-pswd-link")
+	@Override
 	public ResponseEntity<?> verifyPasswordResetLink(@RequestParam Integer uid, @RequestParam String code)
 			throws Exception {
 		userService.verifyPswdResetLink(uid, code);
 		return commonUtil.createBuildResponseMessage("verification success", HttpStatus.OK);
 	}
 
-	@PostMapping("/reset-pswd")
+	@Override
 	public ResponseEntity<?> resetPassword(@RequestBody PswdResetRequest pswdResetRequest) throws Exception {
 		userService.resetPassword(pswdResetRequest);
 		return commonUtil.createBuildResponseMessage("Password reset succes", HttpStatus.OK);
