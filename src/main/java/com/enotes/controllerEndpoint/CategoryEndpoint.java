@@ -11,27 +11,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.enotes.dto.CategoryDto;
 
+import static com.enotes.util.Constants.ROLE_ADMIN;
+import static com.enotes.util.Constants.ROLE_ADMIN_USER;
+
 
 @RequestMapping("/api/v1/category")
 public interface CategoryEndpoint {
 
 @PostMapping("/save")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize(ROLE_ADMIN)
 public ResponseEntity<?> saveCategory(@RequestBody CategoryDto categoryDto);
 
-@GetMapping("/")
-@PreAuthorize("hasRole('ADMIN')")
+@GetMapping("/categories")
+@PreAuthorize(ROLE_ADMIN)
 public ResponseEntity<?> getAllCategory();
 
 @GetMapping("/active")
-@PreAuthorize("hasAnyRole('USER','ADMIN')")
+@PreAuthorize(ROLE_ADMIN)
 public ResponseEntity<?> getActiveCategory();
 
 @GetMapping("/{id}")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize(ROLE_ADMIN)
 public ResponseEntity<?> getCategoryById(@PathVariable Integer id) throws Exception ;
 
 @DeleteMapping("/{id}")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize(ROLE_ADMIN)
 public ResponseEntity<?> deleteCategoryById(@PathVariable Integer id);
 }
