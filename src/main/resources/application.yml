@@ -29,14 +29,14 @@ spring:
   mail:
     host: smtp.gmail.com
     username: jk7876632518@gmail.com
-    password: kuke hjsn hmqe ywjj
+    password: uxsd qdzr eiju vyzy
     port: 587
     properties:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true      
+          starttls:
+            enable: true      
   
 file:
   upload:
@@ -66,14 +66,14 @@ spring:
   mail:
     host: smtp.gmail.com
     username: jk7876632518@gmail.com
-    password: kuke hjsn hmqe ywjj
+    password: uxsd qdzr eiju vyzy
     port: 587
     properties:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true       
+          starttls:
+            enable: true       
 file:
   upload:
     path: notesFile/
@@ -102,14 +102,14 @@ spring:
   mail:
     host: smtp.gmail.com
     username: jk7876632518@gmail.com
-    password: kuke hjsn hmqe ywjj
+    password: uxsd qdzr eiju vyzy
     port: 587
     properties:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true       
+          starttls:
+            enable: true       
 file:
   upload:
     path: notesFile/
@@ -138,14 +138,14 @@ spring:
   mail:
     host: smtp.gmail.com
     username: jk7876632518@gmail.com
-    password: kuke hjsn hmqe ywjj
+    password: uxsd qdzr eiju vyzy
     port: 587
     properties:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true       
+          starttls:
+            enable: true       
 file:
   upload:
     path: notesFile/                       
