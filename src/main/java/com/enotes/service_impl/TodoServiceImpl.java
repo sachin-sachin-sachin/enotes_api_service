@@ -15,6 +15,7 @@ import com.enotes.exception.ResourceNotFoundException;
 import com.enotes.repository.TodoRepository;
 import com.enotes.service.TodoService;
 import com.enotes.util.Validation;
+import com.enotes.util.commonUtil;
 
 @Service
 public class TodoServiceImpl implements TodoService{
@@ -71,7 +72,7 @@ public class TodoServiceImpl implements TodoService{
 
 	@Override
 	public List<TodoDto> getTodoByUser() {
-		Integer userId = 2;
+		Integer userId = commonUtil.getLoggedInUser().getId();
 		List<Todo> todos = todoRepo.findByCreatedBy(userId);
 		  return todos.stream()
 		            .map(td -> {

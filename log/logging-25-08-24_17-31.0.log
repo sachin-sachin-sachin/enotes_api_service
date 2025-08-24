@@ -1,0 +1,2 @@
+2025-24-59 15 ERROR [http-nio-8080-exec-1] c.e.e.globalExceptionHandling - globalExceptionHandling :: ExceptionHandler : Request method 'GET' is not supported
+2025-24-59 15 WARN  [http-nio-8080-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
