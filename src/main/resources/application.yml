@@ -38,6 +38,14 @@ spring:
           starttls:
             enable: true      
   
+springdoc:
+  swagger-ui:
+    operationsSorter: method
+    tagsSorter: alpha
+    path: /enotes-doc
+  api-docs:
+    path: /enotes-api-doc 
+
 file:
   upload:
     path: notesFile/ 
@@ -73,7 +81,9 @@ spring:
         smtp:
           auth: true
           starttls:
-            enable: true       
+            enable: true   
+server:
+  port: 8083         
 file:
   upload:
     path: notesFile/
@@ -145,7 +155,9 @@ spring:
         smtp:
           auth: true
           starttls:
-            enable: true       
+            enable: true 
+server:
+  port: 8083      
 file:
   upload:
     path: notesFile/                       
