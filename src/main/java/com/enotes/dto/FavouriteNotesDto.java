@@ -1,9 +1,5 @@
 package com.enotes.dto;
 
-import com.enotes.entity.Category;
-import com.enotes.entity.FileDetails;
-
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

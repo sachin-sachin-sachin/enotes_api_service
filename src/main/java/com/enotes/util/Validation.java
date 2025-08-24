@@ -3,8 +3,6 @@ package com.enotes.util;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import com.enotes.repository.RoleRepository;
-import com.enotes.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +18,8 @@ import com.enotes.enums.TodoStatus;
 import com.enotes.exception.ResourceNotFoundException;
 import com.enotes.exception.existDataException;
 import com.enotes.exception.validationException;
+import com.enotes.repository.RoleRepository;
+import com.enotes.repository.UserRepository;
 
 @Component
 public class Validation {

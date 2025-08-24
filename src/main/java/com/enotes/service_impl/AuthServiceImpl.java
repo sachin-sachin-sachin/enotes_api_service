@@ -23,8 +23,8 @@ import com.enotes.entity.Role;
 import com.enotes.entity.User;
 import com.enotes.repository.RoleRepository;
 import com.enotes.repository.UserRepository;
-import com.enotes.service.JwtService;
 import com.enotes.service.AuthService;
+import com.enotes.service.JwtService;
 import com.enotes.util.Validation;
 
 import lombok.extern.slf4j.Slf4j;

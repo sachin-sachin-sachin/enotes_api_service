@@ -1,5 +1,7 @@
 package com.enotes.controllerEndpoint;
 
+import static com.enotes.util.Constants.ROLE_ADMIN;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,9 +15,6 @@ import com.enotes.dto.CategoryDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
-import static com.enotes.util.Constants.ROLE_ADMIN;
-import static com.enotes.util.Constants.ROLE_ADMIN_USER;
 
 
 @Tag(name = "Category", description = "All the Category operation APIs")

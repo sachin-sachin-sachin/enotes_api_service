@@ -1,5 +1,7 @@
 package com.enotes.controllerEndpoint;
 
+import static com.enotes.util.Constants.ROLE_USER;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +14,6 @@ import com.enotes.dto.TodoDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
-import static com.enotes.util.Constants.ROLE_USER;
 
 @Tag(name = "Todo", description = "All the Todo Operation APIs")
 @RequestMapping("/api/v1/todo")

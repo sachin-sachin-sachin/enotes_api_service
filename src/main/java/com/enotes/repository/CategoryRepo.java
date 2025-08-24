@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.enotes.dto.CategoryDto;
 import com.enotes.entity.Category;
 
 public interface CategoryRepo extends JpaRepository<Category, Integer> {

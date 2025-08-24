@@ -1,5 +1,11 @@
 package com.enotes.controllerEndpoint;
 
+import static com.enotes.util.Constants.DEFAULT_PAGE_NO;
+import static com.enotes.util.Constants.DEFAULT_PAGE_SIZE;
+import static com.enotes.util.Constants.ROLE_ADMIN;
+import static com.enotes.util.Constants.ROLE_ADMIN_USER;
+import static com.enotes.util.Constants.ROLE_USER;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,15 +20,9 @@ import com.enotes.dto.NotesRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-
-import static com.enotes.util.Constants.ROLE_ADMIN;
-import static com.enotes.util.Constants.ROLE_ADMIN_USER;
-import static com.enotes.util.Constants.ROLE_USER;
-import static com.enotes.util.Constants.DEFAULT_PAGE_NO;
-import static com.enotes.util.Constants.DEFAULT_PAGE_SIZE;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Notes", description = "All the Notes Operation APIs")
 @RequestMapping("/api/v1/notes")

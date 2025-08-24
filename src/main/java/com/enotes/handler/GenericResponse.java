@@ -1,6 +1,5 @@
 package com.enotes.handler;
 
-import java.awt.image.RescaleOp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

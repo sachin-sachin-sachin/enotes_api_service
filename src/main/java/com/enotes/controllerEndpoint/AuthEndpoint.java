@@ -9,9 +9,9 @@ import com.enotes.dto.LoginRequest;
 import com.enotes.dto.UserRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Tag(name = "Authentication", description = "All the user Authentication APIs")
