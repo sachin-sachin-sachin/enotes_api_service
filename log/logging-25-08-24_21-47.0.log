@@ -1,0 +1,6 @@
+2025-24-47 21 INFO  [http-nio-8080-exec-7] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-47 21 INFO  [http-nio-8080-exec-7] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::1 ms
+2025-24-47 21 INFO  [http-nio-8080-exec-7] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-47 21 INFO  [http-nio-8080-exec-7] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::3 ms
+2025-24-47 21 INFO  [http-nio-8080-exec-7] com.enotes.aspect.LoggingAspect - Calling :: CategoryController :: getAllCategory()
+2025-24-47 21 INFO  [http-nio-8080-exec-7] com.enotes.aspect.LoggingAspect - Exceution End :: CategoryController :: getAllCategory() ::14 ms

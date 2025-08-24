@@ -1,8 +1,45 @@
-2025-24-42 17 INFO  [RMI TCP Connection(5)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
-2025-24-42 17 INFO  [RMI TCP Connection(5)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2025-24-42 17 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
-2025-24-42 17 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
-2025-24-42 17 INFO  [RMI TCP Connection(5)-127.0.0.1] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
-2025-24-42 17 INFO  [RMI TCP Connection(5)-127.0.0.1] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-24-42 17 INFO  [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-24-42 17 INFO  [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::3 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::6 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Calling :: cacheController :: getAllCache()
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCache()
+2025-24-55 21 INFO  [http-nio-8080-exec-2] c.e.s.CacheManagerServiceImpl - Cache Name=org.springframework.cache.concurrent.ConcurrentMapCache@128faa93
+2025-24-55 21 INFO  [http-nio-8080-exec-2] c.e.s.CacheManagerServiceImpl - Cache Name=org.springframework.cache.concurrent.ConcurrentMapCache@66305a4f
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Exceution End :: CacheManagerServiceImpl :: getCache() ::1 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-2] com.enotes.aspect.LoggingAspect - Exceution End :: cacheController :: getAllCache() ::13 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::1 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::3 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Calling :: CategoryController :: deleteCategoryById()
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Calling :: categoryServiceImpl :: deleteCategoryById()
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Exceution End :: categoryServiceImpl :: deleteCategoryById() ::195 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-6] com.enotes.aspect.LoggingAspect - Exceution End :: CategoryController :: deleteCategoryById() ::198 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::2 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::4 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Calling :: cacheController :: getAllCache()
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCache()
+2025-24-55 21 INFO  [http-nio-8080-exec-8] c.e.s.CacheManagerServiceImpl - Cache Name=org.springframework.cache.concurrent.ConcurrentMapCache@128faa93
+2025-24-55 21 INFO  [http-nio-8080-exec-8] c.e.s.CacheManagerServiceImpl - Cache Name=org.springframework.cache.concurrent.ConcurrentMapCache@66305a4f
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Exceution End :: CacheManagerServiceImpl :: getCache() ::0 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-8] com.enotes.aspect.LoggingAspect - Exceution End :: cacheController :: getAllCache() ::0 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::1 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::3 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Calling :: cacheController :: getCache()
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCacheName()
+2025-24-55 21 INFO  [http-nio-8080-exec-9] c.e.s.CacheManagerServiceImpl - Cache Name= org.springframework.cache.concurrent.ConcurrentMapCache@66305a4f
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Exceution End :: CacheManagerServiceImpl :: getCacheName() ::0 ms
+2025-24-55 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Exceution End :: cacheController :: getCache() ::1 ms
+2025-24-55 21 INFO  [RMI TCP Connection(16)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-24-55 21 INFO  [RMI TCP Connection(16)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-24-55 21 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-24-55 21 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-24-55 21 INFO  [RMI TCP Connection(16)-127.0.0.1] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-24-55 21 INFO  [RMI TCP Connection(16)-127.0.0.1] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-24-55 21 INFO  [RMI TCP Connection(16)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-24-55 21 INFO  [RMI TCP Connection(16)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.

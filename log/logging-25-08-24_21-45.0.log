@@ -1,0 +1,23 @@
+2025-24-45 21 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-24-45 21 INFO  [restartedMain] o.s.b.a.e.web.EndpointLinksResolver - Exposing 13 endpoints beneath base path '/actuator'
+2025-24-45 21 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-24-45 21 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-24-45 21 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-24-45 21 INFO  [restartedMain] c.enotes.EnotesApiServiceApplication - Started EnotesApiServiceApplication in 13.651 seconds (process running for 15.104)
+2025-24-45 21 INFO  [RMI TCP Connection(4)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-24-45 21 INFO  [RMI TCP Connection(4)-127.0.0.1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-24-45 21 INFO  [RMI TCP Connection(4)-127.0.0.1] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-24-45 21 INFO  [http-nio-8080-exec-1] com.enotes.aspect.LoggingAspect - Calling :: AuthController :: login()
+2025-24-45 21 INFO  [http-nio-8080-exec-1] com.enotes.aspect.LoggingAspect - Calling :: AuthServiceImpl :: login()
+2025-24-45 21 INFO  [http-nio-8080-exec-1] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: generateToken()
+2025-24-45 21 INFO  [http-nio-8080-exec-1] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: generateToken() ::187 ms
+2025-24-45 21 INFO  [http-nio-8080-exec-1] com.enotes.aspect.LoggingAspect - Exceution End :: AuthServiceImpl :: login() ::779 ms
+2025-24-45 21 INFO  [http-nio-8080-exec-1] com.enotes.aspect.LoggingAspect - Exceution End :: AuthController :: login() ::787 ms
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::72 ms
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::4 ms
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: CategoryController :: getAllCategory()
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: categoryServiceImpl :: getcategory()
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: categoryServiceImpl :: getcategory() ::123 ms
+2025-24-45 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: CategoryController :: getAllCategory() ::148 ms

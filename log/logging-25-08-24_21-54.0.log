@@ -1,0 +1,9 @@
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::3 ms
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::6 ms
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: cacheController :: getCache()
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Calling :: CacheManagerServiceImpl :: getCacheName()
+2025-24-54 21 INFO  [http-nio-8080-exec-5] c.e.s.CacheManagerServiceImpl - Cache Name= org.springframework.cache.concurrent.ConcurrentMapCache@66305a4f
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: CacheManagerServiceImpl :: getCacheName() ::1 ms
+2025-24-54 21 INFO  [http-nio-8080-exec-5] com.enotes.aspect.LoggingAspect - Exceution End :: cacheController :: getCache() ::13 ms

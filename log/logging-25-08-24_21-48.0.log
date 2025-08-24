@@ -1,0 +1,12 @@
+2025-24-48 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-48 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::1 ms
+2025-24-48 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-48 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::2 ms
+2025-24-48 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Calling :: CategoryController :: getAllCategory()
+2025-24-48 21 INFO  [http-nio-8080-exec-9] com.enotes.aspect.LoggingAspect - Exceution End :: CategoryController :: getAllCategory() ::0 ms
+2025-24-48 21 INFO  [http-nio-8080-exec-10] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: extractUsername()
+2025-24-48 21 INFO  [http-nio-8080-exec-10] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: extractUsername() ::1 ms
+2025-24-48 21 INFO  [http-nio-8080-exec-10] com.enotes.aspect.LoggingAspect - Calling :: JwtServiceImpl :: validateToken()
+2025-24-48 21 INFO  [http-nio-8080-exec-10] com.enotes.aspect.LoggingAspect - Exceution End :: JwtServiceImpl :: validateToken() ::2 ms
+2025-24-48 21 INFO  [http-nio-8080-exec-10] com.enotes.aspect.LoggingAspect - Calling :: CategoryController :: getAllCategory()
+2025-24-48 21 INFO  [http-nio-8080-exec-10] com.enotes.aspect.LoggingAspect - Exceution End :: CategoryController :: getAllCategory() ::0 ms
